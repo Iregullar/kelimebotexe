@@ -82,4 +82,14 @@ async def kelimeoyun(c:Client, m:Message):
 ✏️ Karışık harflerden doğru kelimeyi bulun
         """
         await c.send_message(m.chat.id, text)
+
+
+
+
         
+@Client.on_message(filters.command("sayi")) 
+async def sayilar(c:Client, m:Message):
+    global oyun
+    sayi = 1
+    if m.text == sayi:
+       m.reply("tebriks bildin")
