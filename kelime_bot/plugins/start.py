@@ -1,3 +1,5 @@
+import asyncio
+import time
 from pyrogram import Client
 from pyrogram import filters
 from random import shuffle
@@ -11,7 +13,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 keyboard = InlineKeyboardMarkup([
     [
-        InlineKeyboardButton("➕ Grubuna Ekle", url=f"http://t.me/BaykusKelime_bot?startgroup=new")
+        InlineKeyboardButton("➕ Grubuna Ekle", url=f"http://t.me/WarForPeace_Bot?startgroup=new")
     ],
     [
         InlineKeyboardButton("Sahibim", url="t.me/slmBATU"),
@@ -82,6 +84,13 @@ async def kelimeoyun(c:Client, m:Message):
 ✏️ Karışık harflerden doğru kelimeyi bulun
         """
         await c.send_message(m.chat.id, text)
+
+        await asyncio.sleep(600)
+
+        if oyun[m.chat.id]['aktif']:
+            await c.send_message(m.chat.id, f"Kimse bulamadı, kelime {oyun[m.chat.id]['kelime']} idi")
+            oyun[m.chat.id] = {}
+
 
 
 
